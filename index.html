@@ -1,66 +1,110 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TykaaL — A Little World of Tika</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TykaasMovie — Movie Recommendation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav class="nav">
-<a class="logo" href="#home">Tykaa<span>L</span></a>
-<div class="links"><a href="#home">Home</a><a href="#about">About Tika</a><a href="#music">My Music</a><a href="#favorites">Favorites</a></div>
-<button id="lang">ID / EN</button><button id="menu">☰</button>
-</nav>
+  <header class="navbar">
+    <a class="brand" href="#"><span>Tykaas</span>Movie</a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#discover">Discover</a>
+      <a href="#favorites">Favorites</a>
+    </nav>
+    <button class="nav-search" onclick="focusSearch()">Search</button>
+  </header>
 
-<header id="home" class="hero">
-<div class="hero-copy">
-<p class="eyebrow">WELCOME TO TYKAAL</p>
-<h1>A little world<br>called <em>Tika.</em></h1>
-<p id="heroText">Tempat kecil untuk cerita tentang aku, hal-hal yang aku suka, musik yang lagi aku dengarkan, monkey, KiiiKiii, dan tentu saja matcha.</p>
-<a class="btn" href="#about">Get to know me</a>
-</div>
-<div class="hero-card"><div class="spark s1">✦</div><div class="spark s2">♡</div><div class="portrait">🎀</div><div class="note">hi, i'm Tika! ♡</div></div>
-</header>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">YOUR NEXT MOVIE NIGHT</p>
+        <h1>Find a movie<br><em>worth watching.</em></h1>
+        <p class="hero-text">Discover Western movies, K-Dramas, anime, and more — all in one elegant place.</p>
+        <div class="hero-actions">
+          <button class="primary" onclick="recommendMovie()">🎲 Recommend for me</button>
+          <a class="secondary" href="#discover">Explore movies</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-poster" id="heroPoster"></div>
+        <div class="hero-overlay">
+          <span>Featured tonight</span>
+          <strong id="heroTitle">The Truman Show</strong>
+          <small>Drama • Comedy • ⭐ 8.2</small>
+        </div>
+      </div>
+    </section>
 
-<section id="about">
-<div class="section-title"><p class="eyebrow">ABOUT ME</p><h2>Nice to meet you,<br><em>I'm Tika.</em></h2></div>
-<div class="profile">
-<div class="profile-photo">🌷</div>
-<div class="bio">
-<div class="bio-row"><span>NAME</span><b>Tika</b></div>
-<div class="bio-row"><span>HOBBIES</span><b>🎧 Listening to music · 🎬 Watching films</b></div>
-<div class="bio-row"><span>NICKNAMES</span><b>Tika · Kya · Tikii · Tikpel</b></div>
-<p>Welcome to my little corner! TykaaL is a simple space where I can share the things that make me happy.</p>
-</div>
-</div>
-<div class="colors">
-<div><p class="eyebrow">MY FAVORITE COLORS</p><h3>Three colors I love.</h3></div>
-<div class="color-list"><div class="color blue"><i></i><b>Blue</b></div><div class="color brown"><i></i><b>Brown</b></div><div class="color pink"><i></i><b>Pink</b></div></div>
-</div>
-</section>
+    <section class="discover" id="discover">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">EXPLORE</p>
+          <h2>What are you in the mood for?</h2>
+        </div>
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Search movies..." oninput="renderMovies()">
+        </div>
+      </div>
 
-<section id="music" class="music-section">
-<div class="section-title"><p class="eyebrow">CURRENTLY LISTENING</p><h2>On repeat <em>lately.</em></h2><p>Four songs I'm listening to these days.</p></div>
-<div class="music-grid">
-<a class="song" href="https://youtu.be/HVT4weC5dbo?si=8trn3TXaWs9rM5qz" target="_blank" rel="noopener"><span>01</span><div><b>Merry Christmas I Miss You</b><small>Alex Crichton</small></div><strong>▶</strong></a>
-<a class="song" href="https://youtu.be/UbbrZTfjkdk?si=2ezbDyMTU_9wCofM" target="_blank" rel="noopener"><span>02</span><div><b>the cure</b><small>Olivia Rodrigo</small></div><strong>▶</strong></a>
-<a class="song" href="https://youtu.be/ci1f7rciUgg?si=NbqDJ1zUEOHw77-l" target="_blank" rel="noopener"><span>03</span><div><b>Astaga Bercanda</b><small>Akbar Chalay, Mingse</small></div><strong>▶</strong></a>
-<a class="song" href="https://youtu.be/t0co3CgoMMU?si=C7qcje6MrxcKonCB" target="_blank" rel="noopener"><span>04</span><div><b>Please, Please, Please Let Me Get What I Want</b><small>The Smiths</small></div><strong>▶</strong></a>
-</div>
-</section>
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="All">All</button>
+        <button class="filter" data-filter="Western">Western</button>
+        <button class="filter" data-filter="K-Drama">K-Drama</button>
+        <button class="filter" data-filter="Anime">Anime</button>
+        <button class="filter" data-filter="Romance">Romance</button>
+        <button class="filter" data-filter="Action">Action</button>
+        <button class="filter" data-filter="Comedy">Comedy</button>
+      </div>
 
-<section id="favorites">
-<div class="section-title"><p class="eyebrow">THINGS I LOVE</p><h2>My little <em>favorites.</em></h2></div>
-<div class="fav-grid">
-<article class="fav monkey"><div class="fav-art">🐒</div><div><span>01 · MONKEY</span><h3>Monkey obsession ♡</h3><p>Aku suka banget hal-hal tentang monkey. Lucu, random, dan bikin mood jadi lebih happy.</p></div></article>
-<article class="fav kii"><div class="fav-art">🎤</div><div><span>02 · K-POP</span><h3>KiiiKiii</h3><p>Aku juga suka grup K-pop KiiiKiii. Bisa jadi tempat kecil buat koleksi foto, meme, dan moments favorit.</p></div></article>
-<article class="fav matcha"><div class="fav-art">🍵</div><div><span>03 · DRINK</span><h3>Matcha time</h3><p>And yes... matcha! Salah satu hal kecil yang selalu punya tempat di moodboard TykaaL.</p></div></article>
-</div>
-</section>
+      <div class="movie-grid" id="movieGrid"></div>
+      <p class="empty" id="emptyState" hidden>No movies found. Try another title or genre.</p>
+    </section>
 
-<section class="mood"><div><span>🎀</span><h2>Made of music,<br>movies & little joys.</h2><p>— TykaaL</p></div></section>
-<footer>© 2026 TykaaL · A little world of Tika ♡</footer>
-<script src="script.js"></script>
+    <section class="favorites-section" id="favorites">
+      <div class="section-heading compact">
+        <div>
+          <p class="eyebrow">YOUR LIST</p>
+          <h2>Favorites</h2>
+        </div>
+        <span class="count" id="favCount">0 saved</span>
+      </div>
+      <div class="favorite-strip" id="favoriteStrip">
+        <p class="empty">Tap the ♡ on a movie to save it here.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="movieModal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <button class="close" onclick="closeModal()">×</button>
+      <div class="modal-poster" id="modalPoster"></div>
+      <div class="modal-info">
+        <span class="pill" id="modalCategory"></span>
+        <h2 id="modalTitle"></h2>
+        <p class="meta" id="modalMeta"></p>
+        <p id="modalDescription"></p>
+        <div class="modal-actions">
+          <button class="primary" id="watchButton">▶ Watch / Official page</button>
+          <button class="secondary" id="modalFav">♡ Add to favorites</button>
+        </div>
+        <p class="note">Note: TykaasMovie uses official/legal viewing links. Availability can vary by country and platform.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="brand"><span>Tykaas</span>Movie</div>
+    <p>Discover something you'll love. © 2026 TykaasMovie</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
