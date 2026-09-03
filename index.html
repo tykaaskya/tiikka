@@ -1,110 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TykaasMovie — Movie Recommendation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tykaa'sFamily 🤍</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="navbar">
-    <a class="brand" href="#"><span>Tykaas</span>Movie</a>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#discover">Discover</a>
-      <a href="#favorites">Favorites</a>
-    </nav>
-    <button class="nav-search" onclick="focusSearch()">Search</button>
-  </header>
-
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-copy">
-        <p class="eyebrow">YOUR NEXT MOVIE NIGHT</p>
-        <h1>Find a movie<br><em>worth watching.</em></h1>
-        <p class="hero-text">Discover Western movies, K-Dramas, anime, and more — all in one elegant place.</p>
-        <div class="hero-actions">
-          <button class="primary" onclick="recommendMovie()">🎲 Recommend for me</button>
-          <a class="secondary" href="#discover">Explore movies</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-poster" id="heroPoster"></div>
-        <div class="hero-overlay">
-          <span>Featured tonight</span>
-          <strong id="heroTitle">The Truman Show</strong>
-          <small>Drama • Comedy • ⭐ 8.2</small>
-        </div>
-      </div>
-    </section>
-
-    <section class="discover" id="discover">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">EXPLORE</p>
-          <h2>What are you in the mood for?</h2>
-        </div>
-        <div class="search-box">
-          <span>⌕</span>
-          <input id="searchInput" type="search" placeholder="Search movies..." oninput="renderMovies()">
-        </div>
-      </div>
-
-      <div class="filters" id="filters">
-        <button class="filter active" data-filter="All">All</button>
-        <button class="filter" data-filter="Western">Western</button>
-        <button class="filter" data-filter="K-Drama">K-Drama</button>
-        <button class="filter" data-filter="Anime">Anime</button>
-        <button class="filter" data-filter="Romance">Romance</button>
-        <button class="filter" data-filter="Action">Action</button>
-        <button class="filter" data-filter="Comedy">Comedy</button>
-      </div>
-
-      <div class="movie-grid" id="movieGrid"></div>
-      <p class="empty" id="emptyState" hidden>No movies found. Try another title or genre.</p>
-    </section>
-
-    <section class="favorites-section" id="favorites">
-      <div class="section-heading compact">
-        <div>
-          <p class="eyebrow">YOUR LIST</p>
-          <h2>Favorites</h2>
-        </div>
-        <span class="count" id="favCount">0 saved</span>
-      </div>
-      <div class="favorite-strip" id="favoriteStrip">
-        <p class="empty">Tap the ♡ on a movie to save it here.</p>
-      </div>
-    </section>
-  </main>
-
-  <div class="modal" id="movieModal" aria-hidden="true">
-    <div class="modal-backdrop" onclick="closeModal()"></div>
-    <div class="modal-content">
-      <button class="close" onclick="closeModal()">×</button>
-      <div class="modal-poster" id="modalPoster"></div>
-      <div class="modal-info">
-        <span class="pill" id="modalCategory"></span>
-        <h2 id="modalTitle"></h2>
-        <p class="meta" id="modalMeta"></p>
-        <p id="modalDescription"></p>
-        <div class="modal-actions">
-          <button class="primary" id="watchButton">▶ Watch / Official page</button>
-          <button class="secondary" id="modalFav">♡ Add to favorites</button>
-        </div>
-        <p class="note">Note: TykaasMovie uses official/legal viewing links. Availability can vary by country and platform.</p>
-      </div>
-    </div>
+<div class="music-note">♪</div>
+<header class="hero">
+  <nav><div class="logo">Tykaa'sFamily</div><a href="#family">Our Family</a></nav>
+  <div class="hero-content">
+    <span class="eyebrow">A little place called home</span>
+    <h1>Where love<br><em>always comes home.</em></h1>
+    <p>Karena keluarga bukan tentang siapa yang paling sempurna, tetapi tentang siapa yang tetap tinggal, memeluk, dan mencintai kita dalam keadaan apa pun.</p>
+    <a class="btn" href="#family">Kenali keluarga kami ↓</a>
   </div>
+</header>
 
-  <footer>
-    <div class="brand"><span>Tykaas</span>Movie</div>
-    <p>Discover something you'll love. © 2026 TykaasMovie</p>
-  </footer>
+<section class="intro">
+  <span class="eyebrow">Untuk rumah kecil kami</span>
+  <h2>Five hearts, one home.</h2>
+  <p>Di antara banyak hal yang berubah dalam hidup, keluarga adalah tempat yang selalu terasa familiar. Tempat untuk pulang, tempat untuk bercerita, dan tempat di mana nama kita dipanggil dengan penuh kasih.</p>
+</section>
 
-  <script src="script.js"></script>
+<section id="family" class="family">
+  <div class="section-title"><span class="eyebrow">Meet the family</span><h2>Orang-orang yang paling berarti.</h2></div>
+  <div class="cards">
+    <article class="card" onclick="openLetter('ayah')"><div class="avatar">A</div><span>Ayah</span><h3>Agus Husin</h3><p>“Sosok yang mengajarkan arti kuat.”</p><button>Buka surat ♡</button></article>
+    <article class="card" onclick="openLetter('mamah')"><div class="avatar">N</div><span>Mamah</span><h3>Nurlaelah</h3><p>“Rumah yang selalu punya pelukan.”</p><button>Buka surat ♡</button></article>
+    <article class="card" onclick="openLetter('rian')"><div class="avatar">R</div><span>Abang 1</span><h3>Rian Andriana</h3><p>“Kakak, sahabat, dan pelindung.”</p><button>Buka surat ♡</button></article>
+    <article class="card" onclick="openLetter('andhika')"><div class="avatar">A</div><span>Abang 2</span><h3>Andhika Rama Dwiputra</h3><p>“Bagian penting dari cerita keluarga.”</p><button>Buka surat ♡</button></article>
+    <article class="card featured" onclick="openLetter('kartika')"><div class="avatar">K</div><span>Anak Bungsu</span><h3>Kartika Chandra</h3><p>“Si kecil yang membawa warna.”</p><button>Buka surat ♡</button></article>
+  </div>
+</section>
+
+<section class="quote">
+  <div>“Kita mungkin tumbuh, berubah, dan berjalan ke arah yang berbeda. Tapi sejauh apa pun langkah kita, semoga rumah ini selalu menjadi tempat yang ingin kita datangi lagi.”</div>
+  <small>— Tykaa'sFamily</small>
+</section>
+
+<footer>
+  <h2>Always a family.</h2>
+  <p>Dibuat dengan penuh cinta untuk keluarga tercinta 🤍</p>
+  <span>© 2026 Tykaa'sFamily</span>
+</footer>
+
+<div id="modal" class="modal" onclick="closeOutside(event)">
+ <div class="letter">
+   <button class="close" onclick="closeLetter()">×</button>
+   <span id="letterRole" class="eyebrow"></span>
+   <h2 id="letterTitle"></h2>
+   <div id="letterText"></div>
+ </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
